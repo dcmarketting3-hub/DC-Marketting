@@ -1,43 +1,27 @@
-# DC Marketting Website — Fixed Final Version
+# DC Marketting Website — Revised Version
 
-This version fixes the Creative Direction image issue by using a proper `assets/` folder with exact lowercase filenames.
+This revised version is built to avoid broken logo/image issues on GitHub Pages.
 
-## Main fixes
-- Creative Direction cards now use these exact files:
-  - `assets/social-campaigns.png`
-  - `assets/lead-campaigns.png`
-  - `assets/brand-assets.png`
-- A CSS fallback is included, so no broken image icon appears even if an image is missing.
-- Phone number removed from the black hero logo box.
-- 8 realistic client testimonials added.
-- Header logo and hero logo are placed using proper `object-fit: contain`.
+## Important update
+The logo and creative direction visuals are embedded inside `style.css`, so you only need to upload these files:
 
-## GitHub upload structure
+- `index.html`
+- `style.css`
+- `script.js`
+- `README.md`
+- `robots.txt`
+- `sitemap.xml`
 
-```text
-DC-Marketting/
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-├── robots.txt
-├── sitemap.xml
-└── assets/
-    ├── logo.png
-    ├── logo-full.png
-    ├── favicon.png
-    ├── social-campaigns.png
-    ├── lead-campaigns.png
-    └── brand-assets.png
-```
+No `assets` folder is required for this version.
 
 ## Upload steps
-1. Extract the ZIP.
-2. Upload the files inside `dc-marketting-fixed-final` to the root of your GitHub repository.
-3. Make sure the complete `assets` folder is uploaded.
+1. Open your GitHub repository: `DC-Marketting`
+2. Delete old files if they are causing confusion.
+3. Upload the revised files listed above.
 4. Commit changes.
-5. Wait 2–5 minutes.
-6. Open `https://dcmarketting3-hub.github.io/DC-Marketting/` and press `Ctrl + F5`.
+5. Wait 1–3 minutes.
+6. Open: `https://dcmarketting3-hub.github.io/DC-Marketting/`
+7. Press `Ctrl + F5` to hard refresh.
 
 ## Contact details
 Phone: +91 87967 95701  
