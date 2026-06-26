@@ -1,14 +1,12 @@
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-menu a');
-const year = document.querySelector('#year');
-const contactForm = document.querySelector('#contactForm');
 const sections = document.querySelectorAll('section[id]');
 const revealElements = document.querySelectorAll('.reveal');
+const contactForm = document.querySelector('#contactForm');
+const year = document.querySelector('#year');
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
+if (year) year.textContent = new Date().getFullYear();
 
 if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
@@ -25,7 +23,7 @@ navLinks.forEach((link) => {
 });
 
 window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY + 140;
+  const scrollPosition = window.scrollY + 120;
 
   sections.forEach((section) => {
     const top = section.offsetTop;
@@ -34,26 +32,23 @@ window.addEventListener('scroll', () => {
     const navLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
 
     if (scrollPosition >= top && scrollPosition < top + height) {
-      navLinks.forEach((link) => link.classList.remove('active'));
+      navLinks.forEach((item) => item.classList.remove('active'));
       if (navLink) navLink.classList.add('active');
     }
   });
 });
 
 if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.14 }
-  );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
 
-  revealElements.forEach((element) => revealObserver.observe(element));
+  revealElements.forEach((element) => observer.observe(element));
 } else {
   revealElements.forEach((element) => element.classList.add('visible'));
 }
@@ -68,8 +63,7 @@ if (contactForm) {
     const service = formData.get('service') || 'General Enquiry';
     const message = (formData.get('message') || '').trim();
 
-    const whatsappMessage = `Hi DC Marketting,%0A%0AI want to discuss digital marketing services.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService Required: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message || 'Please contact me.')}`;
-
-    window.open(`https://wa.me/918796795701?text=${whatsappMessage}`, '_blank', 'noopener');
+    const whatsappText = `Hi DC Marketting,%0A%0AI want to discuss digital marketing services.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService Required: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message || 'Please contact me.')}`;
+    window.open(`https://wa.me/918796795701?text=${whatsappText}`, '_blank', 'noopener');
   });
 }

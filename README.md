@@ -1,30 +1,28 @@
-# DC Marketting Website
+# DC Marketting Website — Revised Version
 
-This is a GitHub Pages-ready website for **DC Marketting**.
+This revised version is built to avoid broken logo/image issues on GitHub Pages.
 
-## Files included
+## Important update
+The logo and creative direction visuals are embedded inside `style.css`, so you only need to upload these files:
+
 - `index.html`
 - `style.css`
 - `script.js`
-- `assets/` folder with logo files and creative images
+- `README.md`
 - `robots.txt`
 - `sitemap.xml`
 
-## Upload on GitHub
-1. Open your repository: `DC-Marketting`
-2. Delete the old website files if needed.
-3. Upload all files and folders from this package.
-4. Commit the changes.
-5. Go to **Settings > Pages**.
-6. Select **Deploy from branch**.
-7. Choose **main** branch and **/(root)** folder.
-8. Save and wait 1–3 minutes.
+No `assets` folder is required for this version.
 
-## Website URL
-`https://dcmarketting3-hub.github.io/DC-Marketting/`
+## Upload steps
+1. Open your GitHub repository: `DC-Marketting`
+2. Delete old files if they are causing confusion.
+3. Upload the revised files listed above.
+4. Commit changes.
+5. Wait 1–3 minutes.
+6. Open: `https://dcmarketting3-hub.github.io/DC-Marketting/`
+7. Press `Ctrl + F5` to hard refresh.
 
-## Notes
-- Contact form sends enquiry to WhatsApp.
-- No backend is required.
-- Logo files are already updated.
-- Creative direction cards use AI-generated visuals in brand colors.
+## Contact details
+Phone: +91 87967 95701  
+Email: dcmarketting3@gmail.com
