@@ -1,12 +1,14 @@
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-menu a');
-const sections = document.querySelectorAll('section[id]');
-const revealElements = document.querySelectorAll('.reveal');
-const contactForm = document.querySelector('#contactForm');
 const year = document.querySelector('#year');
+const contactForm = document.querySelector('#contactForm');
+const revealElements = document.querySelectorAll('.reveal');
+const sections = document.querySelectorAll('section[id]');
 
-if (year) year.textContent = new Date().getFullYear();
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
 
 if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
@@ -23,32 +25,35 @@ navLinks.forEach((link) => {
 });
 
 window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY + 120;
+  const scrollPosition = window.scrollY + 130;
 
   sections.forEach((section) => {
     const top = section.offsetTop;
     const height = section.offsetHeight;
     const id = section.getAttribute('id');
-    const navLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
+    const matchingLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
 
     if (scrollPosition >= top && scrollPosition < top + height) {
-      navLinks.forEach((item) => item.classList.remove('active'));
-      if (navLink) navLink.classList.add('active');
+      navLinks.forEach((link) => link.classList.remove('active'));
+      if (matchingLink) matchingLink.classList.add('active');
     }
   });
 });
 
 if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.14 });
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
 
-  revealElements.forEach((element) => observer.observe(element));
+  revealElements.forEach((element) => revealObserver.observe(element));
 } else {
   revealElements.forEach((element) => element.classList.add('visible'));
 }
@@ -60,10 +65,20 @@ if (contactForm) {
     const formData = new FormData(contactForm);
     const name = (formData.get('name') || '').trim();
     const phone = (formData.get('phone') || '').trim();
-    const service = formData.get('service') || 'General Enquiry';
+    const service = formData.get('service') || 'General enquiry';
     const message = (formData.get('message') || '').trim();
 
-    const whatsappText = `Hi DC Marketting,%0A%0AI want to discuss digital marketing services.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService Required: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message || 'Please contact me.')}`;
-    window.open(`https://wa.me/918796795701?text=${whatsappText}`, '_blank', 'noopener');
+    const text = [
+      'Hi DC Marketting,',
+      '',
+      'I want to discuss digital marketing services.',
+      '',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Service Required: ${service}`,
+      `Message: ${message || 'Please contact me.'}`
+    ].join('\n');
+
+    window.open(`https://wa.me/918796795701?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
   });
 }
