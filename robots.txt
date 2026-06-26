@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dcmarketting3-hub.github.io/DC-Marketting/sitemap.xml
